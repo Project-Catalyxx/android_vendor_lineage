@@ -31,11 +31,15 @@ endif
 
 LINEAGE_VERSION_SUFFIX := $(LINEAGE_BUILD_DATE)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
 
+# ?= so a product that rebrands this tree can set its own strings first.
+# A product makefile's body is read before anything it inherits, so a value
+# set there is already in place when this file is reached.
+
 # Internal version
-LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(LINEAGE_VERSION_SUFFIX)
+LINEAGE_VERSION ?= $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(LINEAGE_VERSION_SUFFIX)
 
 # Display version
-LINEAGE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR)-$(LINEAGE_VERSION_SUFFIX)
+LINEAGE_DISPLAY_VERSION ?= $(PRODUCT_VERSION_MAJOR)-$(LINEAGE_VERSION_SUFFIX)
 
 # LineageOS version properties
 PRODUCT_PRODUCT_PROPERTIES += \
