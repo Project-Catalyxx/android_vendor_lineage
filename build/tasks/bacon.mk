@@ -16,7 +16,9 @@
 # -----------------------------------------------------------------
 # Lineage OTA update package
 
-LINEAGE_TARGET_PACKAGE := $(PRODUCT_OUT)/lineage-$(LINEAGE_VERSION).zip
+# ?= so a product that rebrands this tree can name its own package; see
+# LINEAGE_VERSION in config/version.mk.
+LINEAGE_TARGET_PACKAGE ?= $(PRODUCT_OUT)/lineage-$(LINEAGE_VERSION).zip
 
 SHA256 := prebuilts/build-tools/path/$(HOST_PREBUILT_TAG)/sha256sum
 
