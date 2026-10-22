@@ -17,8 +17,10 @@ ifndef LINEAGE_BUILDTYPE
     endif
 endif
 
-# Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
+# Filter out random types, so it'll reset to UNOFFICIAL. OFFICIAL is for a
+# product that rebrands this tree and decides for itself when a build is its
+# official one (for example, signed with its own release key).
+ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL OFFICIAL,$(LINEAGE_BUILDTYPE)),)
     LINEAGE_BUILDTYPE := UNOFFICIAL
     LINEAGE_EXTRAVERSION :=
 endif
