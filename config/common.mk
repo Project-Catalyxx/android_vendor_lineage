@@ -228,9 +228,12 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     rsync
 
-# Storage manager
+# Storage manager. With GApps, vendor/pixel-style sets it (to false, for
+# Google's storage manager), and a second value would be a build error.
+ifneq ($(WITH_GMS),true)
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.storage_manager.enabled=true
+endif
 
 # These packages are excluded from user builds
 PRODUCT_PACKAGES_DEBUG += \
