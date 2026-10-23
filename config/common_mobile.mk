@@ -38,15 +38,13 @@ endif
 PRODUCT_PACKAGES += \
     Launcher3Overlay
 
-# Charger
+# Charger: the Pixel charger from vendor/pixel-style, as on Rising. LineageOS's
+# own charger images are gone: they install to the same paths as these, and
+# Soong refuses two modules for one file.
 PRODUCT_PACKAGES += \
-    charger_res_images
-
-ifneq ($(WITH_LINEAGE_CHARGER),false)
-PRODUCT_PACKAGES += \
-    lineage_charger_animation \
-    lineage_charger_animation_vendor
-endif
+    charger_res_images \
+    product_charger_res_images \
+    product_charger_res_images_vendor
 
 # Credential storage
 PRODUCT_PACKAGES += \
